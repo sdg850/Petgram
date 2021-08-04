@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "name": "petgram-server",
+  "version": 1,
+  "name": "petgram-server-sdg850",
   "alias": ["petgram-api"],
   "builds": [{ "src": "index.js", "use": "@now/node" }],
   "routes": [{
