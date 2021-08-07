@@ -1,20 +1,78 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Category } from '../Category'
 import { Item, List } from './style'
-import { categories } from '../../../api/db.json'
+
+// use only if we don't have n api available
+// import { categories } from '../../../api/db.json'
+
+const showCategories = () => {
+    const [categories, setCategories] = useState([]);
+    const [loading, setLoading] = useState(false)
 
 
-export const CategoryList = () => (
-    < List >
+    useEffect(function () {
+        setLoading(true)
+        fetch('https://petgram-server-24iykciv5.now.sh/categories')
+            .then(res => res.json())
+            .then(response => {
+                setCategories(response)
+            })
+        setLoading(false)
+    }, [])
 
-        {
-            categories.map(item =>
-                < Item key={item.id}>
-                    < Category { ...item } />
-                </Item>
-            )
+
+    return {
+        categories,
+        loading
+    }
+}
+
+export const CategoryList = () => {
+
+    const [showFixed, setShowFixed] = useState(false)
+
+    const { loading, categories } = showCategories()
+
+
+    useEffect(function () {
+        const onScroll = e => {
+            const newShowFixed = window.scrollY > 200
+            setShowFixed(newShowFixed)
+
         }
 
-    </List>
+        document.addEventListener('scroll', onScroll)
 
-)
+        return () => {
+            document.removeEventListener('scroll', onScroll)
+        }
+
+    }, [showFixed])
+
+
+    const RenderList = (fixed) => (
+
+        < List fixed={fixed} >
+            {
+                loading ? < Item key={item.id}>
+                    cargandoooooo......
+                </Item>
+                    : categories.map(item =>
+                        < Item key={item.id}>
+                            < Category {...item} />
+                        </Item>
+                    )
+            }
+        </List >
+
+    )
+
+    return (
+        <>
+            {showFixed && RenderList(true)}
+            {RenderList()}
+        </>
+
+
+    )
+}
