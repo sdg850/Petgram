@@ -13,7 +13,7 @@ const whitPhotos = gql`
   }
 `;
 
-export const query = (categoryId) => {
+export const query = (categoryId ) => {
    return useQuery(whitPhotos, {
     variables: { categoryId: categoryId }
   })

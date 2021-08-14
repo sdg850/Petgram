@@ -1,6 +1,6 @@
 import React from 'react'
 import { PhotoCard } from '../PhotoCard/index';
-import { query } from '../../hoc/query';
+import { query } from '../../container/query';
 
 export const PhotoCardList = ({ categoryId }) => {
   const { loading, error, data  } = query(categoryId)
