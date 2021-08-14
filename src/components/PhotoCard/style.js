@@ -18,8 +18,8 @@ export const ImgWrapper = styled.div`
 `
 
 export const Img = styled.img`
-  /* ${fadein({ time:'2s'})}; */
-  ${fadein2({ time:'0.5s'})};
+  /* ${fadein({ time: '2s' })}; */
+  ${fadein2({ time: '0.5s' })};
   box-shadow: 0px 10px 14px rgba(0, 0, 0, 0.2) ;
   height: 100%;
   width: 100%;

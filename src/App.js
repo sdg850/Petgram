@@ -6,11 +6,17 @@ import { Logo } from './components/Logo'
 
 
 export const App = () => {
+    const urlParams = new window.URLSearchParams(window.location.search)
+    const detailId = urlParams.get('detail')
+
+    console.log(urlParams)
+
+    
     return (
     <div>
         < GobalStyle />
         < Logo/> 
         < CategoryList />
-        < PhotoCardList />
+        < PhotoCardList categoryId={1} />
     </div>
 )}
