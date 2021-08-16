@@ -1,9 +1,9 @@
 import React from 'react'
-import { CategoryList } from './components/CategoryList'
 import { GobalStyle } from './styles/GlobalStyle'
-import { PhotoCardList } from './components/PhotoCardList'
 import { Logo } from './components/Logo'
 import { PhotoCardWithQuery } from './container/PhotoCardWtihQuery';
+import { Home } from './pages/Home';
+import { Router } from '@reach/router';
 
 
 export const App = () => {
@@ -21,10 +21,14 @@ export const App = () => {
             {
                 detailId
                     ? < PhotoCardWithQuery id={detailId} />
-                    : <>
-                        < CategoryList />
-                        < PhotoCardList categoryId={2} />
-                    </>
+                    : <Router>
+                        < Home path='/' />
+                        < Home path='/pet/:id' />
+                    </Router>
+
+
+
+
             }
         </div>
     )

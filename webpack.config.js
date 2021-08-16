@@ -4,11 +4,19 @@ module.exports = {
   mode: 'development',
   entry: ['@babel/polyfill', './src/index.js'],
   output: {
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
+    publicPath: '/'
+  },
+  devServer: {
+    historyApiFallback: {
+      disableDotRule: true
+    },
+    liveReload: true
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/index.html',
+
     })
   ],
   module: {
