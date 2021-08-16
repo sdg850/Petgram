@@ -59,7 +59,7 @@ export const CategoryList = () => {
                 </Item>
                     : categories.map(item =>
                         < Item key={item.id}>
-                            < Category {...item} path = { `/pet/${item.id}`} />
+                            < Category {...item} path = {`/pet/${item.id}`} />
                         </Item>
                     )
             }
