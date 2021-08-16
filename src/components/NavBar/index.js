@@ -9,7 +9,7 @@ export const NavBar = () => {
         <Nav>
             <Link to='/'> <MdHome size={SIZE} /> </Link>
             <Link to='/Favs'><MdFavoriteBorder size={SIZE} /></Link>
-            <Link to='/Text'><MdPersonOutline size={SIZE} /></Link>
+            <Link to='/User'><MdPersonOutline size={SIZE} /></Link>
         </Nav>
     )
 }
