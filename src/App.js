@@ -20,7 +20,6 @@ export const App = () => {
                 <Home path='/' />
                 <Home path='/pet/:id' />
                 <Details path='/detail/:detailId' />
-
             </Router>
             <Context.Consumer>
                 {
@@ -33,8 +32,6 @@ export const App = () => {
                                 <NotRegistered path='/Favs' />
                                 <NotRegistered path='/User' />
                             </Router>
-
-
                 }
             </Context.Consumer>
             <NavBar />

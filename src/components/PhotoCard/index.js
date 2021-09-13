@@ -18,8 +18,6 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
 
     const { mutation } = ToggleLikeMutation()
 
-    console.log(` Mutation ------->  ${mutation}`);
-
     const handleFavButton = () => {
         !liked && mutation({
             variables:{
