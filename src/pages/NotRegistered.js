@@ -4,22 +4,29 @@ import { UserForm } from './../components/UserForm/';
 import { RegisterMutation } from '../container/RegisterMutation'
 
 export const NotRegistered = () => {
+    const { mutation } = RegisterMutation()
+
     return (
         <Context.Consumer >
             {
                 ({ ActivateAuth }) => {
-                    const { mutation } = RegisterMutation()
 
-                    const onsubmit = (input) => {
-                        const input = input;
-                        const variables = { input: input };
-                        mutation({ variables: variables }).then(ActivateAuth);
+
+                    const onsubmit = (email, password) => {
+                        mutation({
+                            variables: {
+                                input: { email: email, password: password }
+                            }
+                        }).then(ActivateAuth)
                     }
+
 
                     return (
                         <UserForm onsubmit={onsubmit} tittle='Sign Up' />
                     )
                 }
+
+
             }
         </Context.Consumer>
     )

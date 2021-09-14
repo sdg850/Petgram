@@ -1,17 +1,15 @@
 import React from 'react'
+import { RegisterMutation } from '../../container/RegisterMutation';
 import { useInputValue } from './../../hooks/useInputValue';
 import { Button, Form, Tittle, Input } from './style';
 
-
-
-
 export const UserForm = ({ onsubmit, tittle }) => {
     const email = useInputValue('')
-    const password = useInputValue('')
+    const password = useInputValue('')   
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        onsubmit({ email: email.value, password: password.value })
+        onsubmit( email.value, password.value )
     }
 
     return (
