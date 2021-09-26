@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
+import { onError } from '@apollo/client/link/error'
 import { setContext } from '@apollo/client/link/context'
 import Context from './Context';
 
@@ -21,8 +22,15 @@ const authLink = setContext((_, { headers }) => {
     }
 })
 
+const errorMiddleware = onError(({ networkError }) => {
+    if (networkError && networkError.result.code === 'invalid_token') {
+      window.sessionStorage.removeItem('UserSessionToken')
+      window.location = '/'
+    }
+  })
+
 const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link: authLink.concat(httpLink).concat(errorMiddleware),
     cache: new InMemoryCache()
 })
 
