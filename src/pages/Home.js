@@ -5,8 +5,8 @@ import { PhotoCardList } from './../components/PhotoCardList/index';
 export const Home = ({ id }) => {
     return (
         <>
-            < CategoryList />
-            < PhotoCardList categoryId={id} />
+            <CategoryList />
+            <PhotoCardList categoryId={id} />
         </>
     )
 }

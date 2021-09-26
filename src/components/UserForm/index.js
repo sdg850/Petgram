@@ -1,23 +1,28 @@
 import React from 'react'
-import { RegisterMutation } from '../../container/RegisterMutation';
 import { useInputValue } from './../../hooks/useInputValue';
-import { Button, Form, Tittle, Input } from './style';
+import { Button, Form, Tittle, Input, Error } from './style';
+import { Link } from './style';
 
-export const UserForm = ({ onsubmit, tittle }) => {
+export const UserForm = ({ onsubmit, tittle, error, disable, path, message }) => {
     const email = useInputValue('')
-    const password = useInputValue('')   
+    const password = useInputValue('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        onsubmit( email.value, password.value )
+        onsubmit(email.value, password.value)
     }
 
     return (
-        <Form onSubmit={handleSubmit} >
+        <Form disabled={disable} onSubmit={handleSubmit} >
             <Tittle> {tittle} </Tittle>
-            <Input type='email' placeholder='Your Email' {...email} />
-            <Input type='password' placeholder='Your password' {...password} />
-            <Button>{tittle}</Button>
+            <Input disabled={disable} type='email' placeholder='Your Email' {...email} />
+            <Input disabled={disable} type='password' placeholder='Your password' {...password} />
+            <Button disabled={disable} >{tittle}</Button>
+
+            {error && <Error>{error}</Error>}
+
+            <Link to={path}>{message}</Link>
+
         </Form>
     )
 }

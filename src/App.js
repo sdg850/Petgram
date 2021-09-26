@@ -9,6 +9,7 @@ import Context from './Context';
 import { User } from './pages/User';
 import { Favs } from './pages/Favs';
 import { NotRegistered } from './pages/NotRegistered';
+import { Login } from './pages/Login';
 
 
 export const App = () => {
@@ -27,10 +28,17 @@ export const App = () => {
                         isAuth ? <Router>
                             <Favs path='/Favs' />
                             <User path='/User' />
+                            <Favs path='/Favs/Signin' />
+                            <User path='/User/Signin' />
                         </Router>
                             : <Router>
+
+                                <Login path='/Favs/Signin' backto = '/Favs' />
+                                <Login path='/User/Signin' backto = '/User' />
+
                                 <NotRegistered path='/Favs' />
                                 <NotRegistered path='/User' />
+
                             </Router>
                 }
             </Context.Consumer>
