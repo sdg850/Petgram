@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Context } from '../Context'
 import { UserForm } from './../components/UserForm/';
 import { RegisterMutation } from '../container/RegisterMutation'
+import { Layout } from '../components/Layout';
 // import { useLocation } from '@reach/router';
 
 export const NotRegistered = () => {
@@ -31,6 +32,8 @@ export const NotRegistered = () => {
 
 
     return (
-        <UserForm path={path} message={message} disable={MutationLoading} error={error} onsubmit={onsubmit} tittle='Sign Up' />
+        <Layout tittle='Sign Up' subTittle='Sign Up' >
+            <UserForm path={path} message={message} disable={MutationLoading} error={error} onsubmit={onsubmit} tittle='Sign Up' />
+        </Layout>
     )
 }

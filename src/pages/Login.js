@@ -2,9 +2,11 @@ import React, { useContext } from 'react'
 import { Context } from '../Context'
 import { UserForm } from '../components/UserForm';
 import { LoginMutation } from '../container/LoginMutation'
+import { Layout } from '../components/Layout';
 
 
-export const Login = ({ backto }) => {
+
+export const Login = () => {
     const { mutation, MutationLoading, MutationError } = LoginMutation()
     const { ActivateAuth } = useContext(Context)
 
@@ -25,7 +27,9 @@ export const Login = ({ backto }) => {
     const message = "Don't have a account yet!"
 
     return (
-        <UserForm path='/Signup' message={message} disable={MutationLoading} error={error} onsubmit={onsubmit} tittle='Sign in' />
+        <Layout tittle='Sign in' subTittle='Sign in' >
+            <UserForm path='/Signup' message={message} disable={MutationLoading} error={error} onsubmit={onsubmit} tittle='Sign in' />
+        </Layout>
     )
 
 }
