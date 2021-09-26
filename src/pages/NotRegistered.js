@@ -2,12 +2,14 @@ import React, { useContext } from 'react'
 import { Context } from '../Context'
 import { UserForm } from './../components/UserForm/';
 import { RegisterMutation } from '../container/RegisterMutation'
-import { useLocation } from '@reach/router';
+// import { useLocation } from '@reach/router';
 
 export const NotRegistered = () => {
     const { mutation, MutationLoading, MutationError } = RegisterMutation()
-    const param = useLocation()
-    const path = `${param.pathname}/Signin`
+    // const param = useLocation()
+    // const path = `${param.pathname}/Signin`
+    const path = `/Signin`
+
 
     const { ActivateAuth } = useContext(Context)
 

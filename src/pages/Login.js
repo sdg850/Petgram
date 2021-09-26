@@ -25,7 +25,7 @@ export const Login = ({ backto }) => {
     const message = "Don't have a account yet!"
 
     return (
-        <UserForm path={backto} message={message} disable={MutationLoading} error={error} onsubmit={onsubmit} tittle='Sign in' />
+        <UserForm path='/Signup' message={message} disable={MutationLoading} error={error} onsubmit={onsubmit} tittle='Sign in' />
     )
 
 }
