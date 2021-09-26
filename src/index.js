@@ -1,42 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink  } from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context'
 import Context from './Context';
 
-// const client = new ApolloClient({
-//     uri: "https://petgram-server-12ogghb1e-sdg850.vercel.app/graphql",
-//     cache: new InMemoryCache(),
-//     request: operation => {
-//         const token = window.sessionStorage.getItem('UserSessionToken')
-//         const authorization = token ? `bearer ${token}` : ''
-//         operation.setContext({
-//             headers:{
-//                 authorization
-//             }
-//         })
-//     }
-// });
 
-const httpLink  = createHttpLink({
+
+const httpLink = createHttpLink({
     uri: "https://petgram-server-12ogghb1e-sdg850.vercel.app/graphql"
-  })
-  
-  const authLink = setContext((_, { headers }) => {
+})
+
+const authLink = setContext((_, { headers }) => {
     const token = window.sessionStorage.getItem('UserSessionToken')
     return {
-      headers: {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : ''
-      }
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : ''
+        }
     }
-  })
+})
 
-  const client = new ApolloClient({
+const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache()
-  })
+})
 
 ReactDOM.render(
     <Context.Provider>

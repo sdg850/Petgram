@@ -1,9 +1,11 @@
 import React from 'react'
+import { GetFavorites } from './../container/GetFavorites';
 
 export const Favs = () => {
     return (
-        <div>
-     this is fav
-        </div>
+        <>
+            <h2>Your favorites images</h2>
+            <GetFavorites />
+        </>
     )
 }
