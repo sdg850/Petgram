@@ -1,6 +1,5 @@
 import React from 'react'
 import { Img, ImgWrapper, Article } from './style'
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useNearScreen } from '../../hooks/useNearScreen';
 import { FavButton } from '../FAvButton';
 import { ToggleLikeMutation } from '../../container/ToggleLikeMutation';
@@ -11,20 +10,18 @@ const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1504208434309-cb69f4fe5
 
 
 
-export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
-    const key = `key_${id}`
-    const [liked, setLiked] = useLocalStorage(key, false)
+export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE }) => {
+
     const [show, ref] = useNearScreen()
 
     const { mutation } = ToggleLikeMutation()
 
     const handleFavButton = () => {
-        !liked && mutation({
-            variables:{
+         mutation({
+            variables: {
                 input: { id }
             }
         })
-        setLiked(!liked)
     }
 
     return (
