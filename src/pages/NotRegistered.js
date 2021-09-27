@@ -5,7 +5,7 @@ import { RegisterMutation } from '../container/RegisterMutation'
 import { Layout } from '../components/Layout';
 // import { useLocation } from '@reach/router';
 
-export const NotRegistered = () => {
+export default () => {
     const { mutation, MutationLoading, MutationError } = RegisterMutation()
     // const param = useLocation()
     // const path = `${param.pathname}/Signin`

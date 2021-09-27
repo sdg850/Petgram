@@ -5,7 +5,7 @@ import { Context } from './../Context';
 
 
 
-export const User = () => {
+export default () => {
     const { RemoveAuth } = useContext(Context)
 
     return (

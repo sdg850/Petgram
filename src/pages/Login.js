@@ -6,7 +6,7 @@ import { Layout } from '../components/Layout';
 
 
 
-export const Login = () => {
+export default () => {
     const { mutation, MutationLoading, MutationError } = LoginMutation()
     const { ActivateAuth } = useContext(Context)
 

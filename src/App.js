@@ -1,22 +1,32 @@
-import React, { useContext } from 'react'
+import React, { Suspense, useContext } from 'react'
 import { GobalStyle } from './styles/GlobalStyle'
 import { Logo } from './components/Logo'
 import { Home } from './pages/Home';
 import { Redirect, Router } from '@reach/router';
-import { Details } from './pages/Details';
 import { NavBar } from './components/NavBar';
 import { Context } from './Context';
-import { User } from './pages/User';
-import { Favs } from './pages/Favs';
-import { NotRegistered } from './pages/NotRegistered';
-import { Login } from './pages/Login';
-import { NotFound } from './pages/NotFound';
+// import { User } from './pages/User';
+// import { Favs } from './pages/Favs';
+// import { NotRegistered } from './pages/NotRegistered';
+// import { Login } from './pages/Login';
+// import { NotFound } from './pages/NotFound';
+// import { Details } from './pages/Details';
+
+
+const Favs = React.lazy(()=> import('./pages/Favs'))
+const Details = React.lazy(()=> import('./pages/Details'))
+const Login = React.lazy(()=> import('./pages/Login'))
+const NotFound = React.lazy(()=> import('./pages/NotFound'))
+const NotRegistered = React.lazy(()=> import('./pages/NotRegistered'))
+const User = React.lazy(()=> import('./pages/User'))
+
+
 
 
 export const App = () => {
     const { isAuth } = useContext(Context)
     return (
-        <div>
+        <Suspense fallback = {<div />}>
             <GobalStyle />
             <Logo />
             <Router>
@@ -34,7 +44,7 @@ export const App = () => {
                 <User path='/User' />
             </Router>
             <NavBar />
-        </div>
+        </Suspense>
     )
 }
 
