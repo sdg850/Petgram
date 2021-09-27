@@ -7,6 +7,9 @@
     "build": "webpack",
     "dev": "webpack server",
     "lint": "standard",
+    "serve:dev":"webpack --mode development && npx serve dist -s",
+    "serve":"webpack --mode 'development'",
+    "serve:dist":"npx serve dist -s",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

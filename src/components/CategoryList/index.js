@@ -27,7 +27,7 @@ const showCategories = () => {
     }
 }
 
-export const CategoryList = () => {
+export const CategoryListComponent = () => {
 
     const [showFixed, setShowFixed] = useState(false)
 
@@ -76,3 +76,5 @@ export const CategoryList = () => {
 
     )
 }
+
+export const CategoryList = React.memo(CategoryListComponent)

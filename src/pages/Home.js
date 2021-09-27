@@ -4,7 +4,7 @@ import { PhotoCardList } from './../components/PhotoCardList/index';
 import { Layout } from '../components/Layout';
 
 
-export const Home = ({ id }) => {
+const HomePage = ({ id }) => {
     return (
 
         <Layout tittle='Home' subTittle='Home' >
@@ -14,3 +14,7 @@ export const Home = ({ id }) => {
 
     )
 }
+
+export const Home = React.memo(HomePage, (preProps, props) => {
+    return preProps.id === props.id
+})
